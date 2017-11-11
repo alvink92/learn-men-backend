@@ -12,5 +12,17 @@ app.listen(port, function() {
 });
 
 app.get("/", function(req, res) {
-  res.send("Hello Express");
+  res.render("index");
+});
+
+var itemRouter = express.Router();
+
+app.use("/items", itemRouter);
+
+itemRouter.route("/").get(function(req, res) {
+  res.render("items");
+});
+
+itemRouter.route("/single").get(function(req, res) {
+  res.render("singleItem");
 });
