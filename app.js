@@ -1,5 +1,6 @@
 // app.js
 const express = require("express");
+const mongoose = require("mongoose");
 const itemRouter = require("./src/routes/itemRoutes");
 
 const app = express();
