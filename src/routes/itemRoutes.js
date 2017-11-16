@@ -11,9 +11,6 @@ itemRouter.route("/").get(function(req, res) {
     if(err) {
       console.log(err);
     } else {
-      for(var i=0; i < itms.length; i++) {
-        console.log(itms[i].item);
-      }
       res.render('items', {itms: itms});
     }
   });
@@ -28,10 +25,11 @@ itemRouter.route("/add").get(function(req, res) {
 });
 
 itemRouter.route('/add/post').post(function (req, res) {
+  
   var item = new Item(req.body);
       item.save()
     .then(item => {
-    res.redirect('/items');
+    res.redirect('/items/add');
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
@@ -39,3 +37,5 @@ itemRouter.route('/add/post').post(function (req, res) {
 });
 
 module.exports = itemRouter;
+
+
